@@ -12,9 +12,15 @@ app.use(express.static('public'));
 
 
 app.get("/", function (req, res) {
-  var output = req.headers['x-forwarded-for'];
+  var ip = req.headers['x-forwarded-for'].split(',');
+  var header= req.headers['user-agent'].split(',');
+  var output = {
+    "ip adress" : ip[0],
+    "language" : header[]
+    
+  };
   res.render('index',{output : output});
-  console.log(req); 
+  console.log(req.headers); 
 });
 
 
