@@ -15,13 +15,13 @@ app.get("/", function (req, res) {
   var ip = req.headers['x-forwarded-for'].split(',');
   var lang = req.headers['accept-language'].split(',');
   var software= req.headers['user-agent'].split(',');
+    var re = /\((.*)\)/;
   var output = {
     "ip adress" : ip[0],
     "language" : lang[0],
-    "software" : software
+    "software" : software[0].match(re)[1]
   };
   res.render('index',{output : output});
-  console.log(software);  
 });
 
 
