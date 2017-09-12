@@ -12,9 +12,9 @@ app.use(express.static('public'));
 
 
 app.get("/", function (req, res) {
-  var output = req.headers;
+  var output = req.headers['x-forwarded-for'];
   res.render('index',{output : output});
-  console.log(req.headers); 
+  console.log(req); 
 });
 
 
