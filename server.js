@@ -7,14 +7,14 @@ var app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
-
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 
 app.get("/", function (req, res) {
-  var output = req.params;
+  var output = req.headers;
   res.render('index',{output : output});
-  console.log(req.params);
+  console.log(req.headers); 
 });
 
 
